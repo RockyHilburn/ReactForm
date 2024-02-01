@@ -1,10 +1,10 @@
 import { useState } from "react"
 
-export default function Authenticate() {
+export default function Authenticate(token) {
 
     const [successMessage, setSuccessMessage] = useState(null)
     const [error, setError] = useState(null);
-    
+
     async function handleClick(event){
         event.preventDefault();
         try{
@@ -19,10 +19,6 @@ export default function Authenticate() {
                 });
             let result = await response.json();
             let message = result.message;
-            let currentUser = result.data.username;
-            console.log(result);
-
-            setCurrentUser(currentUser);
             setSuccessMessage(message);
             setError(null);
         }
